@@ -1,3 +1,32 @@
 {
-    "cocktails": []
+  "cocktails": [
+    {
+      "id": 1,
+      "title": "Mojito",
+      "ingredients": [
+        "Vodka",
+        "lime",
+        "soda"
+      ]
+    },
+    {
+      "title": "cuba libre",
+      "ingredients": [
+        "rum",
+        " coke",
+        " lime juice",
+        " ice"
+      ],
+      "id": "YW0bFTBUY"
+    },
+    {
+      "title": "Vodka Martini",
+      "ingredients": [
+        "vodka",
+        " vermouth",
+        " lemon juice "
+      ],
+      "id": "aI1pYQQAG"
+    }
+  ]
 }
