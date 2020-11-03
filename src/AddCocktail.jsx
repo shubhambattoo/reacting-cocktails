@@ -1,7 +1,7 @@
 import { Formik, ErrorMessage } from "formik";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import * as Yup from "yup";
-import { addCocktail } from "./redux/actions/cocktails";
+import { addCocktailPending } from "./redux/actions/cocktails";
 
 const errorMessagesSchema = Yup.object().shape({
   title: Yup.string()
@@ -12,12 +12,14 @@ const errorMessagesSchema = Yup.object().shape({
 });
 
 const AddCocktail = ({ addCocktail, addError }) => {
+  const dispatch = useDispatch();
+
   function handleAddCocktail(values, { setSubmitting, resetForm }) {
     const cocktail = {
       title: values.title,
       ingredients: values.ingredients.split(","),
     };
-    addCocktail(cocktail);
+    dispatch(addCocktailPending(cocktail));
     setSubmitting(false);
     resetForm();
   }
@@ -98,4 +100,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addCocktail })(AddCocktail);
+export default connect(mapStateToProps)(AddCocktail);

@@ -1,11 +1,12 @@
-import { useEffect } from "react";
-import { connect } from "react-redux";
-import { getCocktails } from "./redux/actions/cocktails";
+import { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { getCocktailsInitiated } from './redux/actions/cocktails';
 
-const Cocktails = ({ getCocktails, cocktails, isLoading, error }) => {
+const Cocktails = ({ cocktails, isLoading, error }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    getCocktails();
-  }, [getCocktails]);
+    dispatch(getCocktailsInitiated());
+  }, [dispatch]);
 
   return (
     <div>
@@ -20,7 +21,7 @@ const Cocktails = ({ getCocktails, cocktails, isLoading, error }) => {
             {cocktails.map((cocktail) => {
               return (
                 <div className="col-md-6" key={cocktail.id}>
-                  <div className="card">
+                  <div className="card mb-4">
                     <div className="card-body">
                       <h4 className="card-title">{cocktail.title}</h4>
                       <div className="card-text">
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getCocktails })(Cocktails);
+export default connect(mapStateToProps)(Cocktails);
